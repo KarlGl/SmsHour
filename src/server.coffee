@@ -7,6 +7,12 @@ app.use(require('connect-livereload')())
 app.use(require('body-parser')())
 
 timer = jobs(env)
+
+app.post '/send_now', (req, res)->
+  console.log("sending an sms now instead of waiting");
+  timer = jobs(env, timer);
+  res.send('Sent');
+
 app.post '/settings', (req, res)->
   console.log("Updating server environment")
   console.log(req.body)
