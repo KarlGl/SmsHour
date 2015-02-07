@@ -1,4 +1,5 @@
-
+Sms your clingy girlfriend every hour on the hour.
+Will randomly select a love message to send
 
 to run:
 npm install
