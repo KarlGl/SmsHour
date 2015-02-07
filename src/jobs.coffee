@@ -1,4 +1,4 @@
-sms_sender = require('./sms_sender')
+smsSender = require('./sms_sender')
 module.exports = (env, timer)->
 
   # there could be 2 kinds of timers, the waiter and the job. clear both.
@@ -19,9 +19,11 @@ module.exports = (env, timer)->
     # wait till the hour, then interval every hour
     timer.wait = setTimeout(->
       # once on the hour
-      sms_sender()
+      smsSender(env)
       # then every hour after
-      # timer.job = setInterval(sms_sender, 1000 * 60)
-      timer.job = setInterval(sms_sender, 1000 * 60 * 60)
+      timer.job = setInterval( ->
+        smsSender(env)
+      # , 1000)
+      , 1000 * 60 * 60)
     , msUntilNextHour())
   timer
