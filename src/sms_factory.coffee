@@ -1,4 +1,4 @@
 messageGenerator = require('./message_generator')
-module.exports = ->
+module.exports = (env)->
   time: Date()
-  message: messageGenerator()
+  message: messageGenerator(env)

@@ -1,10 +1,9 @@
 smsFactory = require('./sms_factory')
-env = require('./env')
 request = require('request')
 qs = require('querystring')
 
-module.exports = ->
-  sms = smsFactory()
+module.exports = (env)->
+  sms = smsFactory(env)
   params = {
     username: env.settings.user
     password: env.settings.pass

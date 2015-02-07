@@ -3,6 +3,7 @@ env = require('./env')
 express = require('express')
 app = module.exports = express()
 jobs = require('./jobs')
+smsSender = require('./sms_sender')
 app.use(require('connect-livereload')())
 app.use(require('body-parser')())
 
@@ -10,7 +11,7 @@ timer = jobs(env)
 
 app.post '/send_now', (req, res)->
   console.log("sending an sms now instead of waiting");
-  timer = jobs(env, timer);
+  smsSender(env);
   res.send('Sent');
 
 app.post '/settings', (req, res)->
