@@ -4,6 +4,7 @@ A node server that will randomly select a love message to send to any number via
 
 to run:
 ```
+npm install gulp -g
 npm install
 gulp server
 ````
