@@ -1,6 +1,6 @@
 Sms your needy girlfriend every hour on the hour.
 
-Will randomly select a love message to send via SMS broadcast.
+A node server that will randomly select a love message to send to any number via SMS broadcast.
 
 to run:
 ```
