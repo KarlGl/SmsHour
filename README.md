@@ -33,3 +33,30 @@ curl 0.0.0.0:3000 to get a csv of sent smss and times.
 ```
 
 dist/app.js is the compiled main file
+
+Use this as a frontend for it:
+```
+<html>
+<body>
+<button id="toggle-enabled" style="width: 80%; height: 80%;">
+        Loading...
+</button>
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+$(document).ready(function(){
+        console.log("ready");
+        var updateButton = function(body) {
+                var isEnabled = JSON.parse(body).enabled === 't';
+                $('#toggle-enabled').html(isEnabled ? 'Disable' : 'Enable')
+                  .css('background-color', isEnabled ? 'red' : 'green')
+                  .unbind()
+                  .click(function() {
+                        $.post('../sms_hour_backend/settings', {enabled: isEnabled ? 'f' : 't'}).success(updateButton);
+                });     
+        };
+        $.post('../sms_hour_backend/settings').success(updateButton);
+});
+</script>
+</body>
+</html>
+```
